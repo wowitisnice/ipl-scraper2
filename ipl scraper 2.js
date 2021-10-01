@@ -14,6 +14,7 @@ function cb(error,response,html){
         allMatchUrl(html);
     }
 }
+//this function will open page that shows result of all matches that occured in ipl
 function allMatchUrl(html){
     let mainPage=cheerio.load(html);
     let allMatchPage=mainPage(".widget-items.cta-link a").attr("href");
@@ -28,7 +29,7 @@ function allMatchUrl(html){
             sabLink(html);
         }
     }
-   
+   //this function will extract each match result page which contains all details of that match and send ahead to pen it
     function sabLink(html){
       //  console.log(html);
         let allInOne=cheerio.load(html);
@@ -42,6 +43,7 @@ function allMatchUrl(html){
            linkKholo(matchUrl);
         }
     }
+    // this function will open each match page 
     function linkKholo(url){
         //console.log(url);
         request(url,cb);
@@ -53,6 +55,7 @@ function allMatchUrl(html){
             }
         }
     }
+    
     function dataBharo(html){
         let dhundho=cheerio.load(html);
         let cwd=process.cwd();
